@@ -151,7 +151,6 @@ Built for IPC Church, led by Pastor B Steven. Church staff with no technical bac
 
 ## What I'd improve next
 
-- **Move sign-in to Supabase Auth** and protect the database with Row Level Security policies, so only signed-in admins can change content.
 - **Automated tests** for the publish flow and the translation layer.
 - **A staging site** to preview changes before they go live.
 
