@@ -1,263 +1,169 @@
-# IPC Church Steven - Bilingual Website & CRM
+# IPC Church Steven: Bilingual Church Website & CMS
 
-**Live Site:** https://ipcchurchsteven.com
+A bilingual (English / Telugu) church website with a custom admin CMS, live at **[ipcchurchsteven.com](https://ipcchurchsteven.com)**.
 
-A bilingual English–Telugu church website and content management system for IPC Church Steven, built to serve the Telugu-speaking Christian community with modern web technologies and an intuitive admin panel.
+Built for IPC Church, led by Pastor B Steven. Church staff with no technical background can update the whole site from a browser-based admin dashboard, without touching code.
 
----
-
-## Project Overview
-
-IPC Church Steven is a full-featured church website that brings the community together through digital presence. The site features a clean, welcoming design with bilingual support (English/Telugu), event management, sermon library, and a backend CRM for church leaders to manage content without coding.
-
-**Key Features:**
-- ✅ Bilingual interface: English ↔ Telugu language toggle
-- ✅ Welcome landing page with church mission & vision
-- ✅ Event calendar with upcoming services and programs
-- ✅ Sermon library with media uploads
-- ✅ Member directory and community engagement
-- ✅ Admin panel for non-technical church leaders
-- ✅ Responsive design for mobile and desktop
-- ✅ Image gallery showcasing community life
-- ✅ Contact forms and prayer requests
-- ✅ Social media integration
+> **About this repository:** this repo documents the project. The site's source code is kept in a separate deployment repository that Cloudflare publishes from.
 
 ---
 
-## Live Website
+## Live site
 
-**URL:** https://ipcchurchsteven.com
-
-The website is live and actively serving the IPC Church Steven community with:
-- **Homepage:** Welcome message, mission statement, upcoming events
-- **Events Section:** Church calendar, service times, special programs
-- **Sermons:** Library of past sermons with audio/video
-- **Gallery:** Photos from church events and community activities
-- **Contact:** Prayer requests, visitor information, member forms
-- **Bilingual:** Full English and Telugu language support
+- **Website:** https://ipcchurchsteven.com
+- **Backup URL:** https://ipcchurchsteven.stevenburla4.workers.dev
 
 ---
 
-## Technology Stack
+## Features
 
-- **Frontend:** React with responsive design
-- **Backend:** Node.js & Express REST APIs
-- **Database:** PostgreSQL (structured data) + Firebase (real-time updates)
-- **Deployment:** Vercel (serverless, auto-scaling)
-- **Version Control:** GitHub with CI/CD automation
-- **Admin Panel:** React-based dashboard for content management
-- **Languages:** English, Telugu
+### Public website
+- **Bilingual:** English ↔ Telugu toggle on every page
+- **Hero slideshow** with slides managed in the CMS
+- **Watch Live:** embeds the YouTube live stream when the church is on air, and shows the next broadcast time when it's offline
+- **Latest Sermons & Videos:** pulls recent videos from the church's YouTube channel automatically
+- **Gallery** with several album layouts (grid, bento, masonry, carousel)
+- **Pastors** and **Testimonials** (Youth and Member) with photos
+- **Kids Programs** page with a photo gallery and collage style for each program
+- **Posts / Updates:** event recaps and announcements, with multiple sections per post
+- **Song Lyrics** (worship and Sunday school) with search and audio links
+- **Church Timings** widget
+- **Prayer Request form:** saves the request to the CMS and sends an email notification to the church admin inbox
+- **Contact** section with a Google Maps embed
+- **Privacy Policy** and **Terms of Use** pages
+- **Responsive** layout for phone, tablet and desktop
+- **Live updates:** published changes appear on open pages without a refresh (Supabase Realtime)
 
----
-
-## Features in Detail
-
-### 1. Bilingual Interface
-Complete English ↔ Telugu language toggle. All content including:
-- Service announcements
-- Event descriptions
-- Sermon titles and descriptions
-- Member information
-- Church messages and updates
-
-### 2. Event Management System
-- **Upcoming Services:** Weekly church schedule
-- **Special Events:** Holidays, prayer meetings, youth programs
-- **Event Details:** Date, time, location, speaker, description
-- **RSVP Tracking:** Members can register for events
-- **Email Reminders:** Automated notifications before events
-
-### 3. Sermon Library
-- Browse sermons by date, speaker, or category
-- Audio and video playback
-- Download sermon notes (PDF)
-- Social media sharing
-- Sermon archives (searchable)
-
-### 4. Image Gallery
-- Community photos from services, events, and programs
-- Organized by event or date
-- High-resolution display
-- Mobile-friendly gallery view
-
-### 5. Admin Panel
-Church leaders can:
-- Create and publish announcements
-- Add upcoming events to calendar
-- Upload sermon videos and audio
-- Manage member directory
-- View website analytics
-- Moderate community content
-- Send prayer request notifications
-
-### 6. Community Engagement
-- Prayer request submissions
-- Member testimonies
-- Newsletter signup
-- Social media integration
-- Contact forms
-
-### 7. Responsive Design
-- Desktop, tablet, and mobile optimized
-- Touch-friendly interface
-- Fast load times
-- Accessible for all ages
-- Works offline for key content
+### Admin CMS
+| Area | What it does |
+|---|---|
+| **Overview** | Dashboard snapshot, **section visibility** toggles for the homepage, maintenance and recovery tools |
+| **Layout Manager** | Drag and drop to reorder homepage sections |
+| **Media Library** | Central image store with batch upload and in-browser cropping (Cropper.js) |
+| **Hero Slider** | Edit homepage slides |
+| **Gallery** | Albums, each with its own layout style |
+| **Events** | Add and edit church events |
+| **Posts / Updates** | Posts with unlimited sections, each with its own title, text and photos |
+| **Pastors** | Profiles with photo upload; confirms each photo saved to cloud storage |
+| **Testimonials** | Youth and Member categories |
+| **Lyrics** | Bilingual lyrics with audio links |
+| **Ministries** and **Kids Programs** | Program details, photo albums and collage style |
+| **Text Editor** and **Translation Manager** | Edit visible site text in English and Telugu |
+| **YouTube** | Paste a channel URL or handle and the channel ID is resolved automatically |
+| **Watch Live** | Stream URL, live/offline switch and next-broadcast details |
+| **Support** | Donation details (UPI, bank, external donate link) |
+| **Prayer Requests** | Inbox of submitted requests |
+| **Site Settings** and **SEO** | Church contact info and social links; page titles, descriptions and keywords |
+| **User Roles** | Admin accounts and permission levels |
+| **Analytics**, **Activity Log** and **Backups** | Content statistics, a history of admin changes and errors, and full CMS backup and restore |
+| **Draft / Publish** | Edits stay in a draft until an admin clicks Publish |
+| **Idle auto-logout** | Signs out after 5 minutes of inactivity, with a 60-second warning |
 
 ---
 
-## Technical Implementation
+## Tech stack
 
-### Frontend Architecture
-- React component-based architecture
-- Internationalization (i18n) for bilingual support
-- Responsive CSS Grid/Flexbox layout
-- Image optimization for fast loading
-- Progressive Web App (PWA) features
-
-### Backend & APIs
-- RESTful APIs for all features
-- Secure authentication for admin dashboard
-- Role-based access control (RBAC): Admin, Leader, Member, Guest
-- Real-time updates using WebSockets
-- Rate limiting and input validation
-
-### Database Design
-- PostgreSQL normalized schema:
-  - Users & authentication
-  - Events and calendar
-  - Sermons and media
-  - Announcements
-  - Member profiles
-  - Gallery images
-  - Prayer requests
-- Firebase for real-time notifications
-- Indexed queries for fast searches
-
-### Deployment & DevOps
-- GitHub repository for version control
-- GitHub Actions for continuous integration
-- Vercel serverless deployment (auto-scaling)
-- Environment variables for secure config
-- Automated backups and monitoring
-- Zero-downtime deployments
-
-### Security
-- HTTPS encryption
-- User authentication with JWT tokens
-- Password hashing and salting
-- GDPR-compliant privacy controls
-- Input sanitization (XSS prevention)
-- SQL injection prevention
-- Admin IP whitelisting option
+| Layer | Technology |
+|---|---|
+| Frontend | HTML5, CSS3, JavaScript (ES6+), no frameworks |
+| Styling | Hand-written CSS (Grid, Flexbox); Google Fonts: Inter, Playfair Display |
+| Bilingual text | Custom translation layer using `data-i18n` attributes |
+| Image cropping | Cropper.js (CDN) |
+| Database | Supabase (PostgreSQL), content stored as JSON in a `cms_data` table |
+| Live updates | Supabase Realtime |
+| Media storage | Supabase Storage (`church-media` bucket) |
+| Firebase compatibility | `supabase-shim.js` provides a Firebase-style API, so the site moved from Firebase to Supabase without rewriting the app |
+| Hosting | Cloudflare Workers (static assets), auto-deployed from GitHub |
+| Domain and HTTPS | Custom domain through Cloudflare |
+| Email | `contact@ipcchurchsteven.com` via Cloudflare Email Routing |
+| Prayer notifications | Formsubmit.co |
+| YouTube feed | Reads the channel's videos page through r.jina.ai, with a fallback proxy (YouTube's RSS feed was unreliable) |
 
 ---
 
-## Development Approach
+## Architecture
 
-Built using **AI-assisted development** methodology with Claude and Google Antigravity:
+```
+┌─────────────────────┐          ┌─────────────────────┐
+│  Public visitor     │          │  Church admin       │
+│  ipcchurchsteven.com│          │  /admin/dashboard   │
+└──────────┬──────────┘          └──────────┬──────────┘
+           │                                │
+           ▼                                ▼
+   ┌──────────────────────────────────────────┐
+   │  Cloudflare Workers (static hosting)     │
+   │  HTML, CSS, JS for the site and the CMS  │
+   └──────────┬───────────────────────────────┘
+              │
+              ▼
+   ┌──────────────────────────────────────────┐
+   │  Supabase                                │
+   │  • cms_data table: draft + published     │
+   │  • Realtime: pushes changes to pages     │
+   │  • Storage: church-media (photos)        │
+   └──────────────────────────────────────────┘
+```
 
-1. **Requirements Gathering:** Understood church needs and user flows
-2. **Design:** Wireframed bilingual interface and CRM workflows
-3. **Backend Development:** Built robust Node.js APIs with proper error handling
-4. **Frontend Development:** Created React components with reusable patterns
-5. **Database:** Designed normalized PostgreSQL schema
-6. **Testing:** Manual QA and automated testing
-7. **Deployment:** Set up CI/CD with GitHub Actions
-8. **Automation:** PowerShell scripts for deployment and updates
-9. **Monitoring:** Set up error tracking and analytics
-
----
-
-## What I Learned
-
-- **Internationalization (i18n):** Managing multiple languages dynamically
-- **Admin Panel Design:** Creating tools for non-technical end users
-- **Real-time Systems:** WebSocket implementation for instant updates
-- **Community Building:** Features that encourage engagement and participation
-- **Serverless Architecture:** Deploying on Vercel with auto-scaling
-- **Database Design:** Normalized schema for complex relationships
-- **DevOps:** GitHub Actions CI/CD pipeline
-- **PowerShell Automation:** Scripting deployments and maintenance tasks
-- **Content Management:** CMS design patterns for easy content updates
-
----
-
-## Skills Demonstrated
-
-**Full-Stack Development:**
-- React (component architecture, hooks, state management)
-- Node.js & Express (REST APIs, middleware)
-- PostgreSQL (relational database, normalization)
-- Firebase (real-time database, authentication)
-- Authentication & authorization (JWT, sessions, RBAC)
-
-**Frontend Engineering:**
-- Responsive design (CSS Grid, Flexbox, media queries)
-- Internationalization (i18n) implementation
-- Performance optimization (code splitting, lazy loading, caching)
-- Accessibility standards (WCAG)
-- Mobile-first design
-
-**Backend Engineering:**
-- RESTful API design
-- Database schema design
-- Query optimization
-- Error handling & logging
-- Security best practices
-
-**DevOps & Infrastructure:**
-- GitHub Actions CI/CD pipelines
-- Vercel serverless deployment
-- Environment configuration management
-- Monitoring and alerting
-- PowerShell automation scripts
-
-**Soft Skills:**
-- Requirements gathering
-- User-centered design thinking
-- Building for non-technical users
-- Project planning & execution
-- Technical documentation
-- Community service orientation
+- **Draft and publish:** the admin edits the `state` row (the draft). Clicking **Publish** copies it to the `public` row, which is what visitors see.
+- **Live updates:** pages subscribe to changes on `cms_data`, so published content shows up without a reload.
+- **Media:** uploads go to the `church-media` storage bucket and are served by public URL.
 
 ---
 
-## Impact & Community Value
+## Code structure
 
-This project demonstrates:
-- ✅ **Real-world deployment:** Live website serving actual users
-- ✅ **Business impact:** Improved community engagement and communication
-- ✅ **User focus:** Designed with non-technical users in mind
-- ✅ **Accessibility:** Bilingual support for Telugu community
-- ✅ **Reliability:** Stable, production-grade system
-- ✅ **Volunteer commitment:** Built for community benefit
-
----
-
-## Future Enhancements
-
-- Mobile app (iOS/Android) with Capacitor
-- Advanced analytics dashboard
-- Donation/giving platform integration
-- Livestream integration for online services
-- Small group management system
-- Prayer request tracking and intercession board
-- Member mobile app for notifications
-- Sermon recommendation engine
-- Community discussion forum
-
----
-
-## Repository
-
-**GitHub:** https://github.com/praveenchandupandu/ipcchurchsteven  
-**Live Site:** https://ipcchurchsteven.com  
-**Status:** Live and serving the community
+```
+/
+├── index.html            Homepage
+├── kids-programs.html    Kids ministry page
+├── testimonials.html     Testimonials page
+├── lyrics.html           Song lyrics page
+├── privacy.html          Privacy policy
+├── terms.html            Terms of use
+├── main.js               Public site logic (YouTube feed, prayer form, slideshow)
+├── cms-bridge.js         Reads published content and renders it on the page
+├── translations.js       English/Telugu text and the language toggle
+├── lyrics.js             Lyrics search and display
+├── supabase-shim.js      Firebase-style API backed by Supabase
+├── style.css             Site styles
+├── lyrics.css            Lyrics page and shared footer styles
+├── deploy.ps1            PowerShell script: commit and push, which triggers deployment
+│
+└── admin/                Content management system
+    ├── login.html        Sign-in page
+    ├── dashboard.html    Dashboard
+    ├── admin-core.js     State, sign-in, publish and sync, idle logout
+    ├── admin-content.js  Content editors (pastors, gallery, posts, kids…)
+    ├── admin-settings.js YouTube, SEO, user roles, analytics, backups, site info
+    ├── admin-style.css   Dashboard styles
+    └── translations.html Translation Manager
+```
 
 ---
 
-**Built with:** React, Node.js, PostgreSQL, Firebase, Vercel, GitHub Actions, PowerShell  
-**Deployment:** Vercel serverless  
-**Type:** Full-stack web application (CMS + community platform)  
-**Community:** Serving IPC Church Steven and the Telugu-speaking Christian community
+## How it's deployed
+
+1. Changes are committed and pushed to GitHub with `deploy.ps1`, a small PowerShell script that runs `git add`, `git commit` and `git push` and skips the push when nothing has changed.
+2. Cloudflare picks up the push and redeploys the site, usually within a minute.
+3. No build step is needed, because the site is plain HTML, CSS and JavaScript.
+
+---
+
+## What I'd improve next
+
+- **Move sign-in to Supabase Auth** and protect the database with Row Level Security policies, so only signed-in admins can change content.
+- **Automated tests** for the publish flow and the translation layer.
+- **A staging site** to preview changes before they go live.
+
+---
+
+## Credits
+
+Built by Praveen Chandu Pandu for IPC Church, Suryanarayana Colony, Andhra Pradesh, India, using AI-assisted development (Claude, Google Antigravity).
+
+- Content and ministry direction: Pastor B Steven
+- Fonts: Google Fonts (Inter, Playfair Display)
+
+## License
+
+Private project. All rights reserved. Content, branding and photos belong to IPC Church.
